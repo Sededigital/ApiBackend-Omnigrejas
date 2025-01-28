@@ -1,6 +1,6 @@
 "use strict";
 
-const app = require('../source/app'); // Verifique se o caminho está correto
+const app = require('../source/app');  
 const debug = require('debug')('nodestr:server');
 const http = require('http'); // Importação correta do módulo http
 
