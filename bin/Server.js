@@ -1,45 +1,30 @@
 "use strict";
 
-const http = require('http');
+const app = require('../source/app'); // Verifique se o caminho está correto
 const debug = require('debug')('nodestr:server');
-const express = require('express');
-const { Console } = require('console');
-
-const app = express();
+const http = require('http'); // Importação correta do módulo http
 
 // Normalização da porta
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+// Criação do servidor HTTP
 const server = http.createServer(app);
-
-// Definição de rotas
-app.get('/', (req, res) => {
-    res.status(200).send({
-        title: "Omnigrejas API",
-        version: "0.0.1"
-    });
-});
 
 // Inicia o servidor
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-server.on('listening', () => {
-    debug(`API rodando na porta ${port}`);
-    Console.log(`API rodando na porta ${port}`);
-
-});
 
 // Função para normalizar a porta
 function normalizePort(val) {
     const port = parseInt(val, 10);
 
     if (isNaN(port)) {
-        return val; 
+        return val; // Named pipe
     }
     if (port >= 0) {
-        return port; 
+        return port; // Port number
     }
     return false;
 }
@@ -55,12 +40,10 @@ function onError(error) {
         : `Port ${port}`;
 
     switch (error.code) {
-        //erro de permissão
         case 'EACCES':
             console.error(`${bind} requer privilégios elevados`);
             process.exit(1);
             break;
-        //erro de porta em uso
         case 'EADDRINUSE':
             console.error(`${bind} já está em uso`);
             process.exit(1);
@@ -69,13 +52,13 @@ function onError(error) {
             throw error;
     }
 }
-// funcção para debug	
-function onListening() {    
+
+// Função para debug e log de inicialização
+function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'
         ? `pipe ${addr}`
         : `port ${addr.port}`;
     debug(`Listening on ${bind}`);
+    console.log(`API rodando na porta ${port}`);
 }
-
-
