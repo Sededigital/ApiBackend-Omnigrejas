@@ -3,6 +3,7 @@
 const http = require('http');
 const debug = require('debug')('nodestr:server');
 const express = require('express');
+const { Console } = require('console');
 
 const app = express();
 
@@ -23,9 +24,11 @@ app.get('/', (req, res) => {
 // Inicia o servidor
 server.listen(port);
 server.on('error', onError);
+server.on('listening', onListening);
 server.on('listening', () => {
     debug(`API rodando na porta ${port}`);
-    console.log(`API rodando na porta ${port}`);
+    Console.log(`API rodando na porta ${port}`);
+
 });
 
 // Função para normalizar a porta
