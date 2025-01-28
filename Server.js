@@ -25,6 +25,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', () => {
     debug(`API rodando na porta ${port}`);
+    console.log(`API rodando na porta ${port}`);
 });
 
 // Função para normalizar a porta
@@ -51,10 +52,12 @@ function onError(error) {
         : `Port ${port}`;
 
     switch (error.code) {
+        //erro de permissão
         case 'EACCES':
             console.error(`${bind} requer privilégios elevados`);
             process.exit(1);
             break;
+        //erro de porta em uso
         case 'EADDRINUSE':
             console.error(`${bind} já está em uso`);
             process.exit(1);
@@ -63,3 +66,13 @@ function onError(error) {
             throw error;
     }
 }
+// funcção para debug	
+function onListening() {    
+    const addr = server.address();
+    const bind = typeof addr === 'string'
+        ? `pipe ${addr}`
+        : `port ${addr.port}`;
+    debug(`Listening on ${bind}`);
+}
+
+
