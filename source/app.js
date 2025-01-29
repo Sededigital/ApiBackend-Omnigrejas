@@ -31,10 +31,18 @@ const put = router.put('/:id', (req, res, next) => {
 
 });
 
+const del = router.delete('/:id', (req, res, next) => { 
+    const id = req.params.id;
+    res.status(200).send({
+        id: id
+    });
+});
+
 
 
 app.use('/', router);
 app.use('/clientes', create);
 app.use('/clientes', put);
+app.use('/clientes', del);
 
 module.exports = app;
