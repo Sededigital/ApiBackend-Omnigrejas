@@ -24,4 +24,6 @@ app.get('/', (req, res, next) => {
 });
 });
 
+app.use('/', router);
+
 module.exports = app;
