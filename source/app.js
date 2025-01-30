@@ -9,15 +9,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Rota principal
-const indexRoutes = require('./routes/index');
+const indexRoutes = require('./routes/index-router');
+const usuariosRoutes = require('./routes/usuarios-routers');
 
 // Definindo a rota /create corretamente
 
 
 
 app.use('/', indexRoutes);
-app.use('/clientes', create);
-app.use('/clientes', put);
-app.use('/clientes', del);
+app.use('/usuarios', usuariosRoutes);
+
 
 module.exports = app;
