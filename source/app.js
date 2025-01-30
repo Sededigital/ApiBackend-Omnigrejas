@@ -15,7 +15,7 @@ const usuariosRoutes = require('./routes/usuarios-routers');
 // Definindo a rota /create corretamente
 
 
-
+//usando as rotas
 app.use('/', indexRoutes);
 app.use('/usuarios', usuariosRoutes);
 

@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", (req, res, next) => {
     res.status(201).send(req.body);
    message : "Usuário cadastrado com sucesso!"
-   
+
 });
 
 // Rota para atualização de dados
@@ -29,3 +29,5 @@ router.delete("/:id", (req, res, next) => {
 });
 
 module.exports = router;
+
+
