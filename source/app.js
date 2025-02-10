@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 require("dotenv").config();
+
 
 
 
@@ -23,7 +25,7 @@ mongoose.connect("mongodb://localhost:27017/OmnigrejasApp", {
 
 const app = express();
 const router = express.Router();
-
+app.use(cors());
 // Configuração do body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
