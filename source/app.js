@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+require("dotenv").config();
+
+
 
 
 // Conexão com o banco de dados
@@ -29,12 +32,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const indexRoutes = require('./routes/index-router');
 const usuariosRoutes = require('./routes/usuarios-routers');
 
+const authRoutes = require("../source/routes/Auth-router");
+
+
 // Definindo a rota /create corretamente
 
 
 //usando as rotas
 app.use('/', indexRoutes);
 app.use('/usuarios', usuariosRoutes);
+app.use("/api/auth", authRoutes);
+
 
 
 module.exports = app;
