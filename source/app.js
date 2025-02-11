@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-require("dotenv").config();
 
+require("dotenv").config();
 
 
 
@@ -18,7 +18,6 @@ mongoose.connect("mongodb://localhost:27017/OmnigrejasApp", {
 })
 .then(() => console.log("🔥 MongoDB conectado com sucesso!"))
 .catch((err) => console.error("❌ Erro ao conectar ao MongoDB:", err));
-
 
 
 
