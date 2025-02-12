@@ -7,17 +7,13 @@ const cors = require('cors');
 require("dotenv").config();
 
 
-
-
-// Conexão com o banco de dados
-
-
-mongoose.connect("mongodb://localhost:27017/OmnigrejasApp", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log("🔥 MongoDB conectado com sucesso!"))
+.then(() => console.log("🔥 MongoDB Atlas conectado com sucesso!"))
 .catch((err) => console.error("❌ Erro ao conectar ao MongoDB:", err));
+
 
 
 
