@@ -1,16 +1,18 @@
-"use strict";
-
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const controller = require("../controllers/usuarios-controllers");
+const User = require('../models/User'); // Certifique-se de ter um modelo User
 
-// Rotas do CRUD de usuários
-router.post("/", controller.post);
-router.put("/:id", controller.put);
-router.delete("/:id", controller.delete);
+// Criar um novo usuário
+router.post('/', async (req, res) => {
+  const { nome, email, senha } = req.body;
 
-
+  try {
+    const novoUsuario = new User({ nome, email, senha });
+    await novoUsuario.save();
+    res.status(201).json({ mensagem: 'Usuário criado com sucesso!', usuario: novoUsuario });
+  } catch (err) {
+    res.status(500).json({ mensagem: 'Erro ao criar usuário.', erro: err.message });
+  }
+});
 
 module.exports = router;
-
-

@@ -2,11 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-
 require("dotenv").config();
 
+// Inicialização do app
+const app = express();
 
+// Conexão com o MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -14,32 +15,19 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log("🔥 MongoDB Atlas conectado com sucesso!"))
 .catch((err) => console.error("❌ Erro ao conectar ao MongoDB:", err));
 
-
-
-
-
-const app = express();
-const router = express.Router();
+// Middlewares
 app.use(cors());
-// Configuração do body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Rota principal
+// Rotas
 const indexRoutes = require('./routes/index-router');
 const usuariosRoutes = require('./routes/usuarios-routers');
+const authRoutes = require('../source/routes/Auth-router');
 
-const authRoutes = require("../source/routes/Auth-router");
-
-
-// Definindo a rota /create corretamente
-
-
-//usando as rotas
 app.use('/', indexRoutes);
 app.use('/usuarios', usuariosRoutes);
-app.use("/api/auth", authRoutes);
+app.use('/api/auth', authRoutes);
 
-
-
+// Exporta o app
 module.exports = app;
