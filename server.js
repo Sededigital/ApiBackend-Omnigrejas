@@ -1,8 +1,8 @@
 "use strict";
 
-const app = require('../source/app');  
+const app = require('./source/app');  // Corrigido o caminho para acessar o app.js
 const debug = require('debug')('nodestr:server');
-const http = require('http'); // Importação correta do módulo http
+const http = require('http');
 
 // Normalização da porta
 const port = normalizePort(process.env.PORT || '3000');
@@ -53,12 +53,12 @@ function onError(error) {
     }
 }
 
-// Função para debug e log de inicialização
+// Função para logar a inicialização com debug
 function onListening() {
     const addr = server.address();
     const bind = typeof addr === 'string'
         ? `pipe ${addr}`
         : `port ${addr.port}`;
     debug(`Listening on ${bind}`);
-    console.log(`API rodando na porta ${port}`);
+    console.log(`🚀 API rodando na porta ${port}`);
 }
