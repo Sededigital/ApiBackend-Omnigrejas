@@ -4,7 +4,7 @@
   "description": "Backend do OMINIGREJAS",
   "main": "bin/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "dev": "nodemon ./bin/server.js",
     "test": "node ./bin/server.js"
   },
