@@ -1,5 +1,4 @@
-const path = require('path');
-const User = require(path.join(__dirname, '..', 'models', 'User')); // Aqui está o caminho ajustado
+const User = require('../models/User');
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt'); // Para hashear a senha
