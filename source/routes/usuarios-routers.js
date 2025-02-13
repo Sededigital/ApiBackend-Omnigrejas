@@ -1,4 +1,3 @@
-console.log(__dirname);
 const path = require('path');
 const User = require(path.join(__dirname, '..', 'models', 'User')); // Aqui está o caminho ajustado
 const express = require('express');
