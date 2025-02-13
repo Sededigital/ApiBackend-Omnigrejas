@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+  const Uer = require('../models/User');
 const bcrypt = require('bcrypt'); // Para hashear a senha
 
 // Criar um novo usuário
