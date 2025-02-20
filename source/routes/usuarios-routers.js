@@ -1,7 +1,28 @@
-const User = require('../models/user');
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt'); // Para hashear a senha
+const bcrypt = require('bcrypt'); 
+
+const mongoose = require('mongoose');
+
+// Definir o esquema de usuário
+const userSchema = new mongoose.Schema({
+  nome: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  senha: {
+    type: String,
+    required: true,
+  },
+});
+
+// Criar o modelo de usuário
+
 
 // Criar um novo usuário
 router.post('/', async (req, res) => {
