@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const validarDados = require('../../middlewares/ValidarUsuario'); 
-const validarDadosUsuario = require('../../middlewares/ValidarUsuario');
 
 // Definir o esquema de usuário
 const userSchema = new mongoose.Schema({
