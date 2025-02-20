@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
 // Alterar o nome do modelo para evitar conflito
 const UserModel = mongoose.models.UserModel || mongoose.model('UserModel', userSchema);
 
+
+router.get('/teste', (req, res) => {
+  res.status(200).json({ mensagem: 'Rota GET /usuarios/teste funcionando!' });
+});
+
 // Rota para criar um novo usuário
 router.post('/',validarDados, async (req, res) => {
   const { nome, email, senha } = req.body;

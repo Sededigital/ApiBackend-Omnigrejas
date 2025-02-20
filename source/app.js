@@ -24,5 +24,10 @@ app.use('/', indexRoutes);
 app.use('/usuarios', usuariosRoutes);
 app.use('/api/auth', authRoutes);
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Algo deu errado!');
+});
+
 // Exporta o app
 module.exports = app;
