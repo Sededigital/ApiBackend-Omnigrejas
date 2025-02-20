@@ -8,7 +8,7 @@ const validarDadosUsuario = (req, res, next) => {
   
     // Verificar formato do e-mail
     if (!email.includes('@')) {
-      return res.status(400).json({ mensagem: 'E-mail inválido.' });
+      return res.status(400).json({ mensagem: 'E-mail inválido.!' });
     }
   
     if (senha.length < 6) {

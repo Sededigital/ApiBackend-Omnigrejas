@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const validarDados = require('../../middlewares/ValidarUsuario'); 
+const validarDados = require('../middlewares/validarUsuario'); 
 
 // Definir o esquema de usuário
 const userSchema = new mongoose.Schema({
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
 const UserModel = mongoose.models.UserModel || mongoose.model('UserModel', userSchema);
 
 // Rota para criar um novo usuário
-router.post('/', validarDadosUsuario, async (req, res) => {
+router.post('/',validarDados, async (req, res) => {
   const { nome, email, senha } = req.body;
 
   try {
