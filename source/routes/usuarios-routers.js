@@ -21,8 +21,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// Criar o modelo do usuário (evitando duplicação de modelo)
-const UserModel = mongoose.models.UserModel || mongoose.model('UserModel', userSchema, 'usermodels');
+const UserModel = mongoose.model('UserModel', userSchema, 'usermodels');
 
 // Rota de teste
 router.get('/teste', (req, res) => {
